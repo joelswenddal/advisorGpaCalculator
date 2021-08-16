@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Advisor GPA Calculator</title>
+</head>
+
+<body>
+    <main>
+        <h1>Advisor GPA Calculator</h1>
+        <form id="pastRecordInputForm">
+            <fieldset>
+                <legend>Past Academic Record</legend>
+                <label for="priorCreditHours">Prior attempted credit hours</label>
+                <input type="number" id="priorCreditHours" placeholder="0" step="1">
+                <br>
+                <label for="totalQualityPoints">Total quality points</label>
+                <input type="number" id="totalQualityPoints" placeholder="0" step=".1">
+                <br>
+                <label for="currentOverallGPA">Current overall GPA</label>
+                <input type="number" id="currentOverallGPA" placeholder="0" step=".1">
+
+            </fieldset>
+        </form>
+        <form id="currentSemInputForm">
+            <fieldset>
+                <legend>Current Semester</legend>
+                <label for="currentCreditHours">New credit hours this semester</label>
+                <input type="number" id="currentCreditHours" placeholder="0" step="1">
+                <br>
+                <label for="targetTermGPA">Target term GPA</label>
+                <input type="number" id="targetTermGPA" placeholder="0" step=".1">
+            </fieldset>
+        </form>
+        <div id="output_section">
+            <button type="submit" id="submit_button" class="button">Calculate GPA</button>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+
+
+</html>
