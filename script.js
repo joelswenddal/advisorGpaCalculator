@@ -1,24 +1,25 @@
 "use strict";
 
-/*
-const priorCreditHours = document.getElementById("priorCreditHours");
-const totalQualityPoints = document.getElementById("totalQualityPoints");
-const currentOverallGPA = document.getElementById("currentOverallGPA");
-const currentCreditHours = document.getElementById("currentCreditHours");
-const targetTermGPA = document.getElementById("targetTermGPA");
-*/
+
 let submit_button = document.getElementById("submit_button")
+let replaceDcheckbox = document.getElementById("gradeReplaceD")
+let replaceFcheckbox = document.getElementById("gradeReplaceF")
 
 let section = document.getElementById("output_section");
-/*console.log(priorCreditHours.value)*/
+
 
 function calculateTargetGPAregular() {
 
     const priorCreditHours = document.getElementById("priorCreditHours").value;
     const totalQualityPoints = document.getElementById("totalQualityPoints").value;
-    const currentOverallGPA = document.getElementById("currentOverallGPA").value;
     const currentCreditHours = document.getElementById("currentCreditHours").value;
     const targetTermGPA = document.getElementById("targetTermGPA").value;
+
+    /*calculate current overall GPA and insert into form*/
+    let currentOverallGPA = totalQualityPoints / priorCreditHours
+
+    let par = document.getElementById("currentOverallGPA")
+    par.innerText = "Current Overall GPA is: " + currentOverallGPA
 
     let target_credit_hours = parseInt(priorCreditHours) + parseInt(currentCreditHours);
     console.log(target_credit_hours);
@@ -31,18 +32,47 @@ function calculateTargetGPAregular() {
 
 }
 
+function replaceDgrade(event) {
+    let parent = document.getElementById("gradeReplaceDdiv");
+    let input = document.createElement("input");
+    input.setAttribute("type", "number");
+    input.setAttribute("id", "creditsToReplaceD");
+    parent.appendChild(input);
 
-function display(event) {
+}
+
+function replaceFgrade(event) {
+    let parent = document.getElementById("gradeReplaceFdiv");
+    let input = document.createElement("input");
+    input.setAttribute("type", "number");
+    input.setAttribute("id", "creditsToReplaceF");
+    parent.appendChild(input);
+
+}
+
+function displayResult(event) {
+    /*delete previous results if they are being displayed*/
+    section = document.getElementById("output_section");
+    deleteResult(section);
 
     /*display result in output section*/
     let result_div = document.createElement("div");
     result_div.setAttribute("id", "output");
     /*append the result div to the section element and calculate result on submission*/
-    section.append(result_div);
+    section.appendChild(result_div);
     let resultGPA = calculateTargetGPAregular()
     result_div.innerText = "Target GPA for this semester is: " + resultGPA;
     /*event.preventDefault();*/
 
 }
 
-submit_button.addEventListener("click", display);
+function deleteResult(parent) {
+
+    while (parent.children.length > 1) {
+        parent.removeChild(parent.lastChild);
+    }
+}
+
+replaceDcheckbox.addEventListener("click", replaceDgrade)
+replaceFcheckbox.addEventListener("click", replaceFgrade)
+submit_button.addEventListener("click", displayResult);

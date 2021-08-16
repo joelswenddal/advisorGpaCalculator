@@ -21,8 +21,8 @@
                 <label for="totalQualityPoints">Total quality points</label>
                 <input type="number" id="totalQualityPoints" placeholder="0" step=".1">
                 <br>
-                <label for="currentOverallGPA">Current overall GPA</label>
-                <input type="number" id="currentOverallGPA" placeholder="0" step=".1">
+
+                <p id="currentOverallGPA"> </p>
 
             </fieldset>
         </form>
@@ -34,6 +34,16 @@
                 <br>
                 <label for="targetTermGPA">Target term GPA</label>
                 <input type="number" id="targetTermGPA" placeholder="0" step=".1">
+                <br>
+                <fieldset id="gradeReplaceDdiv">
+                    <label for="gradeReplaceD">Will any D grades be replaced?</label>
+                    <input type="checkbox" id="gradeReplaceD">
+                </fieldset>
+                <fieldset id="gradeReplaceFdiv">
+                    <label for="gradeReplaceF">Will any F grades be replaced?</label>
+                    <input type="checkbox" id="gradeReplaceF">
+                </fieldset>
+
             </fieldset>
         </form>
         <div id="output_section">
