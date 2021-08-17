@@ -10,25 +10,31 @@
 </head>
 
 <body>
-    <main>
+    <header>
         <h1>Advisor GPA Calculator</h1>
-        <form id="pastRecordInputForm">
+    </header>
+    <main>
+
+        <section id="pastRecordInputForm">
+            <h3>Past Academic Record</h3>
+
             <fieldset>
-                <legend>Past Academic Record</legend>
+
                 <label for="priorCreditHours">Prior attempted credit hours</label>
                 <input type="number" id="priorCreditHours" placeholder="0" step="1">
                 <br>
                 <label for="totalQualityPoints">Total quality points</label>
                 <input type="number" id="totalQualityPoints" placeholder="0" step=".1">
                 <br>
-
-                <p id="currentOverallGPA"> </p>
+                <p id="currentOverallGPA"></p>
 
             </fieldset>
-        </form>
-        <form id="currentSemInputForm">
+        </section>
+        <section id="currentSemInputForm">
+            <h3>Current Semester</h3>
             <fieldset>
-                <legend>Current Semester</legend>
+
+
                 <label for="currentCreditHours">New credit hours this semester</label>
                 <input type="number" id="currentCreditHours" placeholder="0" step="1">
                 <br>
@@ -45,7 +51,8 @@
                 </fieldset>
 
             </fieldset>
-        </form>
+        </section>
+
         <div id="output_section">
             <button type="submit" id="submit_button" class="button">Calculate GPA</button>
         </div>
