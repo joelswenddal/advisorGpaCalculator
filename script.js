@@ -10,23 +10,48 @@ let section = document.getElementById("output_section");
 
 function calculateTargetGPAregular() {
 
-    const priorCreditHours = document.getElementById("priorCreditHours").value;
-    const totalQualityPoints = document.getElementById("totalQualityPoints").value;
-    const currentCreditHours = document.getElementById("currentCreditHours").value;
-    const targetTermGPA = document.getElementById("targetTermGPA").value;
+    let priorCreditHours = parseInt(document.getElementById("priorCreditHours").value);
+    let totalQualityPoints = parseFloat(document.getElementById("totalQualityPoints").value);
+    const currentCreditHours = parseInt(document.getElementById("currentCreditHours").value);
+    const targetTermGPA = parseFloat(document.getElementById("targetTermGPA").value);
 
     /*calculate current overall GPA and insert into form*/
     let currentOverallGPA = totalQualityPoints / priorCreditHours
 
+    /*if D or F grade replacement, recalculate priorCreditHours
+    and totalQualityPoints (in the case of D replacement)*/
+
+    if (document.getElementById("creditsToReplaceF")) {
+        if (document.getElementById("creditsToReplaceF").value) {
+            let creditAdjust = parseInt(document.getElementById("creditsToReplaceF").value);
+            console.log(creditAdjust);
+            priorCreditHours = priorCreditHours - creditAdjust;
+            console.log(priorCreditHours);
+        }
+    }
+
+    if (document.getElementById("creditsToReplaceD")) {
+        if (document.getElementById("creditsToReplaceD").value) {
+            let creditAdjust = parseInt(document.getElementById("creditsToReplaceD").value);
+            console.log(creditAdjust);
+            priorCreditHours = priorCreditHours - creditAdjust;
+            console.log(priorCreditHours);
+            /* quality points for a D grade is (1 * number of credit hours) */
+            totalQualityPoints = totalQualityPoints - (creditAdjust * 1);
+        }
+    }
+
+
+
     let par = document.getElementById("currentOverallGPA")
     par.innerText = "Current Overall GPA is: " + currentOverallGPA
 
-    let target_credit_hours = parseInt(priorCreditHours) + parseInt(currentCreditHours);
+    let target_credit_hours = priorCreditHours + currentCreditHours;
     console.log(target_credit_hours);
-    let target_quality_pts = target_credit_hours * parseFloat(targetTermGPA);
-    let needed_quality_pts = target_quality_pts - parseFloat(totalQualityPoints);
+    let target_quality_pts = target_credit_hours * targetTermGPA;
+    let needed_quality_pts = target_quality_pts - totalQualityPoints;
     console.log(needed_quality_pts);
-    let target_GPA = needed_quality_pts / parseInt(currentCreditHours);
+    let target_GPA = needed_quality_pts / currentCreditHours;
     console.log(target_GPA);
     return target_GPA;
 
@@ -34,6 +59,7 @@ function calculateTargetGPAregular() {
 
 function replaceDgrade(event) {
     let parent = document.getElementById("gradeReplaceDdiv");
+    deleteResult(parent, 2)
     let input = document.createElement("input");
     input.setAttribute("type", "number");
     input.setAttribute("id", "creditsToReplaceD");
@@ -43,6 +69,7 @@ function replaceDgrade(event) {
 
 function replaceFgrade(event) {
     let parent = document.getElementById("gradeReplaceFdiv");
+    deleteResult(parent, 2);
     let input = document.createElement("input");
     input.setAttribute("type", "number");
     input.setAttribute("id", "creditsToReplaceF");
@@ -53,7 +80,7 @@ function replaceFgrade(event) {
 function displayResult(event) {
     /*delete previous results if they are being displayed*/
     section = document.getElementById("output_section");
-    deleteResult(section);
+    deleteResult(section, 1);
 
     /*display result in output section*/
     let result_div = document.createElement("div");
@@ -66,13 +93,13 @@ function displayResult(event) {
 
 }
 
-function deleteResult(parent) {
+function deleteResult(parent, limit) {
 
-    while (parent.children.length > 1) {
+    while (parent.children.length > limit) {
         parent.removeChild(parent.lastChild);
     }
 }
 
-replaceDcheckbox.addEventListener("click", replaceDgrade)
-replaceFcheckbox.addEventListener("click", replaceFgrade)
+replaceDcheckbox.addEventListener("input", replaceDgrade);
+replaceFcheckbox.addEventListener("input", replaceFgrade);
 submit_button.addEventListener("click", displayResult);
