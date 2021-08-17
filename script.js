@@ -41,10 +41,8 @@ function calculateTargetGPAregular() {
         }
     }
 
-
-
     let par = document.getElementById("currentOverallGPA")
-    par.innerText = "Current Overall GPA is: " + currentOverallGPA
+    par.innerText = "Current Overall GPA is: " + round(currentOverallGPA, 3)
 
     let target_credit_hours = priorCreditHours + currentCreditHours;
     console.log(target_credit_hours);
@@ -53,8 +51,13 @@ function calculateTargetGPAregular() {
     console.log(needed_quality_pts);
     let target_GPA = needed_quality_pts / currentCreditHours;
     console.log(target_GPA);
-    return target_GPA;
+    return round(target_GPA, 3);
 
+}
+
+function round(number, decimalPlaces) {
+    const factorOfTen = Math.pow(10, decimalPlaces);
+    return Math.round(number * factorOfTen) / factorOfTen;
 }
 
 function replaceDgrade(event) {
@@ -87,7 +90,8 @@ function displayResult(event) {
     result_div.setAttribute("id", "output");
     /*append the result div to the section element and calculate result on submission*/
     section.appendChild(result_div);
-    let resultGPA = calculateTargetGPAregular()
+    let resultGPA = calculateTargetGPAregular();
+    /*resultGPA = round(resultGPA);*/
     result_div.innerText = "Target GPA for this semester is: " + resultGPA;
     /*event.preventDefault();*/
 
