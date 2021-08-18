@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1>Advisor GPA Calculator</h1>
+        <h1>Target GPA Calculator</h1>
     </header>
     <main>
 
@@ -21,10 +21,10 @@
             <fieldset>
 
                 <label for="priorCreditHours">Prior attempted credit hours</label>
-                <input type="number" id="priorCreditHours" placeholder="0" step="1">
+                <input type="number" id="priorCreditHours" placeholder="0" step="1" size="6" min="0" required>
                 <br>
                 <label for="totalQualityPoints">Total quality points</label>
-                <input type="number" id="totalQualityPoints" placeholder="0" step=".1">
+                <input type="number" id="totalQualityPoints" placeholder="0" step=".1" min="0" required>
                 <br>
                 <p id="currentOverallGPA"></p>
 
@@ -34,28 +34,27 @@
             <h3>Current Semester</h3>
             <fieldset>
 
-
                 <label for="currentCreditHours">New credit hours this semester</label>
-                <input type="number" id="currentCreditHours" placeholder="0" step="1">
+                <input type="number" id="currentCreditHours" placeholder="0" step="1" min="0" required>
                 <br>
                 <label for="targetTermGPA">Target GPA</label>
-                <input type="number" id="targetTermGPA" placeholder="0" step=".1">
+                <input type="number" id="targetTermGPA" placeholder="0" step=".1" min="0" required>
                 <br>
                 <fieldset id="gradeReplaceDdiv">
-                    <label for="gradeReplaceD">Will any D grades be replaced?</label>
-                    <input type="checkbox" id="gradeReplaceD">
+                    <label for="gradeReplaceD">Check box if any D grades are being replaced</label>
+                    <input type="checkbox" id="gradeReplaceD" class="checkbox">
                 </fieldset>
                 <fieldset id="gradeReplaceFdiv">
-                    <label for="gradeReplaceF">Will any F grades be replaced?</label>
-                    <input type="checkbox" id="gradeReplaceF">
+                    <label for="gradeReplaceF">Check box if any F grades are being replaced</label>
+                    <input type="checkbox" id="gradeReplaceF" class="checkbox">
                 </fieldset>
 
             </fieldset>
         </section>
 
-        <div id="output_section">
+        <section id="output_section">
             <button type="submit" id="submit_button" class="button">Calculate GPA</button>
-        </div>
+        </section>
     </main>
     <script src="./script.js"></script>
 </body>

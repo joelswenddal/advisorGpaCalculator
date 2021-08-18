@@ -41,8 +41,21 @@ function calculateTargetGPAregular() {
         }
     }
 
+    if (document.getElementById("currentOverallGpa")) {
+        document.getElementById("currentOverallGpa").remove();
+
+    }
+
     let par = document.getElementById("currentOverallGPA")
-    par.innerText = "Current Overall GPA is: " + round(currentOverallGPA, 3)
+    par.innerText = "Current Overall GPA is:"
+
+    let parent = document.getElementById("pastRecordInputForm")
+
+    let currentGpaOutput = document.createElement("p")
+    currentGpaOutput.innerText = round(currentOverallGPA, 3).toString()
+    currentGpaOutput.setAttribute("id", "currentOverallGpa")
+    parent.appendChild(currentGpaOutput)
+
 
     let target_credit_hours = priorCreditHours + currentCreditHours;
     console.log(target_credit_hours);
@@ -62,22 +75,47 @@ function round(number, decimalPlaces) {
 
 function replaceDgrade(event) {
     let parent = document.getElementById("gradeReplaceDdiv");
-    deleteResult(parent, 2)
-    let input = document.createElement("input");
-    input.setAttribute("type", "number");
-    input.setAttribute("id", "creditsToReplaceD");
-    parent.appendChild(input);
 
+    if (replaceDcheckbox.checked) {
+
+        deleteResult(parent, 2);
+
+        let prompt = document.createElement("p");
+        prompt.setAttribute("id", "replaceGradeInstructions");
+        prompt.innerText = "Enter number of 'D' credit hours being replaced";
+        parent.appendChild(prompt);
+
+        let input = document.createElement("input");
+        input.setAttribute("type", "number");
+        input.setAttribute("id", "creditsToReplaceD");
+        input.setAttribute("min", "0");
+        parent.appendChild(input);
+
+    } else {
+        deleteResult(parent, 2);
+    }
 }
 
 function replaceFgrade(event) {
-    let parent = document.getElementById("gradeReplaceFdiv");
-    deleteResult(parent, 2);
-    let input = document.createElement("input");
-    input.setAttribute("type", "number");
-    input.setAttribute("id", "creditsToReplaceF");
-    parent.appendChild(input);
 
+    let parent = document.getElementById("gradeReplaceFdiv");
+
+    if (replaceFcheckbox.checked) {
+        deleteResult(parent, 2);
+
+        let prompt = document.createElement("p");
+        prompt.setAttribute("id", "replaceGradeInstructions");
+        prompt.innerText = "Enter number of 'F' credit hours being replaced";
+        parent.appendChild(prompt);
+
+        let input = document.createElement("input");
+        input.setAttribute("type", "number");
+        input.setAttribute("id", "creditsToReplaceF");
+        input.setAttribute("min", "0")
+        parent.appendChild(input);
+    } else {
+        deleteResult(parent, 2);
+    }
 }
 
 function displayResult(event) {
@@ -86,14 +124,17 @@ function displayResult(event) {
     deleteResult(section, 1);
 
     /*display result in output section*/
-    let result_div = document.createElement("div");
-    result_div.setAttribute("id", "output");
+    let result_div = document.createElement("p");
+    result_div.setAttribute("id", "outputCaption");
+    result_div.innerText = "Target GPA for this semester is: ";
     /*append the result div to the section element and calculate result on submission*/
     section.appendChild(result_div);
+
     let resultGPA = calculateTargetGPAregular();
-    /*resultGPA = round(resultGPA);*/
-    result_div.innerText = "Target GPA for this semester is: " + resultGPA;
-    /*event.preventDefault();*/
+    let gpa = document.createElement("p");
+    gpa.innerText = resultGPA.toString()
+    gpa.setAttribute("id", "gpaResult")
+    section.appendChild(gpa)
 
 }
 
@@ -104,6 +145,6 @@ function deleteResult(parent, limit) {
     }
 }
 
-replaceDcheckbox.addEventListener("input", replaceDgrade);
-replaceFcheckbox.addEventListener("input", replaceFgrade);
+replaceDcheckbox.addEventListener("change", replaceDgrade);
+replaceFcheckbox.addEventListener("change", replaceFgrade);
 submit_button.addEventListener("click", displayResult);

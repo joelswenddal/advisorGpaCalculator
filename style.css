@@ -1,7 +1,9 @@
 body {
     font-family:sans-serif;
-    overflow: hidden;
-    background-color: #f7f7ff;
+    overflow: scroll;
+    /*background-color: #f7f7ff;*/
+    /*background-color: #f1f3ed;*/
+    background-color: #e0ddcf;
     margin: 0;
     
 
@@ -35,11 +37,21 @@ section {
     flex-direction: column;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 1rem;
-    border: solid;
+    border: none;
     background-color: white;
     justify-content: normal;
+    align-items:center;
     margin:1em;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    width: 30%;
+    overflow: visible;
     
+    
+}
+
+#output_section {
+    align-items: center;
+    width: 20%;
 }
 
 fieldset {
@@ -53,6 +65,13 @@ input {
     font-size: large;
     border-radius: .25rem;
     margin: 2px;
+    width: 3.5em;
+}
+
+input.checkbox {
+    width: 20px;
+    height: 20px;
+    
 }
 
 h1 {
@@ -69,18 +88,26 @@ h3 {
     font-family:Arial, Helvetica, sans-serif;
     margin-top: 0;
     color: #e36414;
+    font-weight: bold;
+    
 }
 
 button {
+    display: flex;
+    align-items: center;
     margin: 1rem;
-    padding: .5rem .75rem;
-    height: 2.5rem;
+    padding: 1rem 1.5rem 1em 1.5rem;
+    height: 3rem;
     max-width: 10rem;
-    background-color: #22333b;
+    
+
+    background-color: #c7ced1;
     font-size: 1rem;
-    color: white;
+    color: #22333b;
     font-weight: bold;
     border: none;
+    border-radius: .25em;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
      
 }
 
@@ -91,4 +118,32 @@ button:active{
 
 button:hover{
     color: #e36414;
+}
+
+#replaceGradeInstructions {
+    font-style: italic;
+}
+
+#outputCaption {
+    font-style: italic;
+    font-size: large;
+}
+
+
+#gpaResult {
+    font-size: 3em;
+    background-color: #22333b;
+    color: white ;
+    margin: 0;
+    border-radius: .2em;
+    padding: .25em;
+}
+
+#currentOverallGpa {
+    font-size:1.5em;
+    margin: 0;
+    background-color: #c7ced1;
+    padding: .25em;
+    border-radius: .2em;
+    color: #22333b;
 }
