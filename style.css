@@ -64,8 +64,14 @@ input {
     background-color: #fffcf2;
     font-size: large;
     border-radius: .25rem;
-    margin: 2px;
+    margin-left: .5em;
     width: 3.5em;
+    height: 1.2em;
+}
+
+.inputGroup {
+    display: flex;
+
 }
 
 input.checkbox {
@@ -120,6 +126,27 @@ button:hover{
     color: #e36414;
 }
 
+.instructionsButton {
+    height: 1em;
+    margin: 0;
+    padding: .8em;
+    margin-left: 1em;
+}
+
+.instructionDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownContent {
+    display:none;
+    position: absolute;
+}
+
+.instructionDropdown:hover .dropdownContent {
+    display:block;
+}
+
 #replaceGradeInstructions {
     font-style: italic;
 }
@@ -146,4 +173,5 @@ button:hover{
     padding: .25em;
     border-radius: .2em;
     color: #22333b;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
