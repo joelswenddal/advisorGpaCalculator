@@ -43,7 +43,7 @@ section {
     align-items:center;
     margin:1em;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-    width: 30%;
+    width: 35%;
     overflow: visible;
     
     
@@ -128,9 +128,12 @@ button:hover{
 
 .instructionsButton {
     height: 1em;
+    width: 1em;
     margin: 0;
     padding: .8em;
     margin-left: 1em;
+    border-radius: 1em;
+    justify-content: center;
 }
 
 .instructionDropdown {
@@ -139,8 +142,15 @@ button:hover{
 }
 
 .dropdownContent {
-    display:none;
+    display: none;
     position: absolute;
+    background-color: #b8dbd9;
+    font-size: small;
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px;
+    width: 12em;
+    
 }
 
 .instructionDropdown:hover .dropdownContent {

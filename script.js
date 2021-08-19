@@ -21,15 +21,6 @@ function calculateTargetGPAregular() {
     /*if D or F grade replacement, recalculate priorCreditHours
     and totalQualityPoints (in the case of D replacement)*/
 
-    if (document.getElementById("creditsToReplaceF")) {
-        if (document.getElementById("creditsToReplaceF").value) {
-            let creditAdjust = parseInt(document.getElementById("creditsToReplaceF").value);
-            console.log(creditAdjust);
-            priorCreditHours = priorCreditHours - creditAdjust;
-            console.log(priorCreditHours);
-        }
-    }
-
     if (document.getElementById("creditsToReplaceD")) {
         if (document.getElementById("creditsToReplaceD").value) {
             let creditAdjust = parseInt(document.getElementById("creditsToReplaceD").value);
@@ -41,22 +32,29 @@ function calculateTargetGPAregular() {
         }
     }
 
+    if (document.getElementById("creditsToReplaceF")) {
+        if (document.getElementById("creditsToReplaceF").value) {
+            let creditAdjust = parseInt(document.getElementById("creditsToReplaceF").value);
+            console.log(creditAdjust);
+            priorCreditHours = priorCreditHours - creditAdjust;
+            console.log(priorCreditHours);
+        }
+    }
+    /* delete prior overall GPA output if there is one */
     if (document.getElementById("currentOverallGpa")) {
         document.getElementById("currentOverallGpa").remove();
 
     }
-
+    /* calculate and display current overall GPA */
     let par = document.getElementById("currentOverallGPA")
     par.innerText = "Current Overall GPA is:"
-
     let parent = document.getElementById("pastRecordInputForm")
-
     let currentGpaOutput = document.createElement("p")
     currentGpaOutput.innerText = round(currentOverallGPA, 3).toString()
     currentGpaOutput.setAttribute("id", "currentOverallGpa")
     parent.appendChild(currentGpaOutput)
 
-
+    /* calculate new target GPA for current semester */
     let target_credit_hours = priorCreditHours + currentCreditHours;
     console.log(target_credit_hours);
     let target_quality_pts = target_credit_hours * targetTermGPA;

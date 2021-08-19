@@ -22,15 +22,19 @@
                 <div class="inputGroup">
                     <label for="priorCreditHours">Prior attempted credit hours</label>
                     <input type="number" id="priorCreditHours" placeholder="0" step="1" size="6" min="0" required>
-                    <button class="instructionsButton">?</button>
+                    <div class="instructionDropdown">
+                        <button class="instructionsButton">?</button>
+                        <p class="dropdownContent">Find on transcript. This is the total number of credit hours that the student has attempted.</p>
+                    </div>
                 </div>
                 <br>
                 <div class="inputGroup">
                     <label for="totalQualityPoints">Total quality points</label>
                     <input type="number" id="totalQualityPoints" placeholder="0" step=".1" min="0" required>
-                    <button class="instructionsButton">?</button>
+
                     <div class="instructionDropdown">
-                        <p class="dropdownContent">sndkfkaudfueejkwjrj erjwjw werjwjr</p>
+                        <button class="instructionsButton">?</button>
+                        <p class="dropdownContent">Find on transcript. Quality points = (credits * grade points)</p>
                     </div>
                 </div>
                 <br>
@@ -44,13 +48,19 @@
                 <div class="inputGroup">
                     <label for="currentCreditHours">New credit hours this semester</label>
                     <input type="number" id="currentCreditHours" placeholder="0" step="1" min="0" required>
-                    <button class="instructionsButton">?</button>
+                    <div class="instructionDropdown">
+                        <button class="instructionsButton">?</button>
+                        <p class="dropdownContent">The number of credit hours being taken this semester</p>
+                    </div>
                 </div>
                 <br>
                 <div class="inputGroup">
                     <label for="targetTermGPA">Target Overall GPA</label>
                     <input type="number" id="targetTermGPA" placeholder="0" step=".1" min="0" required>
-                    <button class="instructionsButton">?</button>
+                    <div class="instructionDropdown">
+                        <button class="instructionsButton">?</button>
+                        <p class="dropdownContent">The Overall GPA needed to reach a particular goal.</p>
+                    </div>
                 </div>
                 <br>
                 <fieldset id="gradeReplaceDdiv">
