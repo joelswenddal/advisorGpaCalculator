@@ -5,8 +5,8 @@ body {
     /*background-color: #f1f3ed;*/
     background-color: #e0ddcf;
     margin: 0;
+    position: relative;
     
-
 }
 
 header {
@@ -26,7 +26,7 @@ main {
     display: flex;
     flex-direction: column;
     margin: auto;
-
+    margin-bottom: 1em;
     justify-content: normal;
     align-items: center;
 
@@ -48,6 +48,7 @@ section {
     
     
 }
+
 
 #output_section {
     align-items: center;
@@ -105,7 +106,6 @@ button {
     padding: 1rem 1.5rem 1em 1.5rem;
     height: 3rem;
     max-width: 10rem;
-    
 
     background-color: #c7ced1;
     font-size: 1rem;

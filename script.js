@@ -4,10 +4,16 @@
 let submit_button = document.getElementById("submit_button")
 let replaceDcheckbox = document.getElementById("gradeReplaceD")
 let replaceFcheckbox = document.getElementById("gradeReplaceF")
-
 let section = document.getElementById("output_section");
 
 
+/**
+ * This function collects user input for prior credit hours,
+ * total quality points, current credit hours, and target
+ * GPA and returns a rounded target GPA. Adjusts and updates
+ * relevant DOM elements in the process.
+ * @returns A target GPA rounded to three decimal places
+ */
 function calculateTargetGPAregular() {
 
     let priorCreditHours = parseInt(document.getElementById("priorCreditHours").value);
@@ -66,12 +72,25 @@ function calculateTargetGPAregular() {
 
 }
 
+/**
+ * This function rounds a number to a certain number
+ * of decimal digits
+ * @param {number} number 
+ * @param {number} decimalPlaces 
+ * @returns The number rounded to the specified 
+ * number of decimal places
+ */
 function round(number, decimalPlaces) {
     const factorOfTen = Math.pow(10, decimalPlaces);
     return Math.round(number * factorOfTen) / factorOfTen;
 }
 
-function replaceDgrade(event) {
+/**
+ * This function collects input to adjust the GPA
+ * calculation in the case that a D grade is being
+ * replaced. Used by calculateTargetGPARegular function.
+ */
+function replaceDgrade() {
     let parent = document.getElementById("gradeReplaceDdiv");
 
     if (replaceDcheckbox.checked) {
@@ -94,7 +113,12 @@ function replaceDgrade(event) {
     }
 }
 
-function replaceFgrade(event) {
+/**
+ * This function collects input to adjust the GPA
+ * calculation in the case that a F grade is being
+ * replaced. Used by calculateTargetGPARegular function.
+ */
+function replaceFgrade() {
 
     let parent = document.getElementById("gradeReplaceFdiv");
 
@@ -116,7 +140,13 @@ function replaceFgrade(event) {
     }
 }
 
-function displayResult(event) {
+/**
+ * This function operates at the top level to
+ * collect user input and adjust the DOM
+ * tree to display the results.
+ */
+
+function displayResult() {
     /*delete previous results if they are being displayed*/
     section = document.getElementById("output_section");
     deleteResult(section, 1);
@@ -136,6 +166,15 @@ function displayResult(event) {
 
 }
 
+/**
+ * This function takes a DOM element (a parent) and
+ * a number representing a certain number of child elements.
+ * If there are more child elements than the limit, then
+ * the function removes those elements that exceed the
+ * limit.
+ * @param {a DOM element} parent 
+ * @param {number} limit 
+ */
 function deleteResult(parent, limit) {
 
     while (parent.children.length > limit) {
