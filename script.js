@@ -56,7 +56,7 @@ function calculateTargetGPAregular() {
     par.innerText = "Current Overall GPA is:"
     let parent = document.getElementById("pastRecordInputForm")
     let currentGpaOutput = document.createElement("p")
-    currentGpaOutput.innerText = round(currentOverallGPA, 3).toString()
+    currentGpaOutput.innerText = round(currentOverallGPA, 2).toString()
     currentGpaOutput.setAttribute("id", "currentOverallGpa")
     parent.appendChild(currentGpaOutput)
 
@@ -68,7 +68,7 @@ function calculateTargetGPAregular() {
     console.log(needed_quality_pts);
     let target_GPA = needed_quality_pts / currentCreditHours;
     console.log(target_GPA);
-    return round(target_GPA, 3);
+    return round(target_GPA, 2);
 
 }
 
@@ -82,7 +82,7 @@ function calculateTargetGPAregular() {
  */
 function round(number, decimalPlaces) {
     const factorOfTen = Math.pow(10, decimalPlaces);
-    return Math.round(number * factorOfTen) / factorOfTen;
+    return Math.round(Math.floor(number * factorOfTen)) / factorOfTen;
 }
 
 /**

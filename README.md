@@ -20,6 +20,8 @@ The single-page app collects 4 data points:
 
 With this data, the app outputs a term GPA result that the student needs to achieve in the current semester to reach their overall target GPA. It also allows for grade replacement of D and F grades if a student is trying to replace a low grade in a prior semester.
 
+Note on rounding: Currently, the GPA results are rounded DOWN to the 2nd decimal digit (e.g. 2.679 would round down to 2.67 GPA). This is in line with the current practice at one institution. However, this policy should be checked when transfering this tool to any other context.
+
 Although this was made with a particular advising context in mind, there are many schools that calculate GPA in a similar manner, so small changes to the Javascript code should allow for it to be used in other university advising contexts.
 
 It should be noted that I designed this as an outside project at the same time that I was taking a Web Development at Oregon State University. My motivation was to practice my skills at directly manipulating DOM elements and event-driven programming. I was happy to be able to make something that would be useful to my colleagues while strengthing my front-end development skills.
